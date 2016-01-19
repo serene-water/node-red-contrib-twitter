@@ -31,14 +31,16 @@ module.exports = function(RED) {
             
             var creds = RED.nodes.getNode(n.creds);
             
+            var payload = typeof msg.payload === 'object' ? msg.payload : {};
+        
             var attrs = ['q','geocode','lang','result_type','count','until','since_id','max_id','include_entities'];
             for (var attr of attrs) {
                 if (n[attr]) {
-                    msg.payload[attr] = n[attr];     
+                    payload[attr] = n[attr];     
                 }
             }
 
-            _internals.search(msg.payload, creds, function(err, result){
+            _internals.search(payload, creds, function(err, result){
         
                 msg.payload = result;
                 node.log(err);
