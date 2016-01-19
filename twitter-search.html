@@ -1,0 +1,107 @@
+<!-- Sample html file that corresponds to the 99-sample.js file              -->
+<!-- This creates and configures the onscreen elements of the node           -->
+
+<!-- If you use this as a template, update the copyright with your own name. -->
+
+<!-- First, the content of the edit dialog is defined.                       -->
+
+<script type="text/x-red" data-template-name="twitter-search">
+
+   <div class="form-row">
+        <label for="node-input-creds"> Credentials</label>
+        <input type="text" id="node-input-creds">
+    </div>
+    
+    <!-- By convention, most nodes have a 'name' property. The following div -->
+    <!-- provides the necessary field. Should always be the last option      -->
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name of this Event">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-q">Query String</label>
+        <input type="text" id="node-input-q" placeholder="@twitter">
+    </div>
+    <div class="form-row">
+        <label for="node-input-geocode">Geocode</label>
+        <input type="text" id="node-input-geocode" placeholder="latitude,longitude,radius">
+    </div>
+    <div class="form-row">
+        <label for="node-input-lang">Language</label>
+        <input type="text" id="node-input-lang" placeholder="eu">
+    </div>
+    <div class="form-row">
+        <label for="node-input-result_type">Result Order</label>
+        <select type="text" id="node-input-result_type">
+            <option value="mixed" selected="selected">Mixed</option>
+            <option value="recent">Recent</option>
+            <option value="popular">Popular</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-count">Count</label>
+        <input type="text" id="node-input-count" placeholder="100">
+    </div>
+    <div class="form-row">
+        <label for="node-input-until">Until</label>
+        <input type="text" id="node-input-until" placeholder="YYYY-MM-DD">
+    </div>
+    <div class="form-row">
+        <label for="node-input-since_id">Since ID</label>
+        <input type="text" id="node-input-since_id" placeholder="12345">
+    </div>
+    <div class="form-row">
+        <label for="node-input-max_id">Max ID</label>
+        <input type="text" id="node-input-max_id" placeholder="54321 ">
+    </div>
+    <div class="form-row">
+        <label for="node-input-include_entities">Include Entities</label>
+        <input type="text" id="node-input-include_entities" placeholder="falce">
+    </div>
+
+</script>
+
+
+<!-- Next, some simple help text is provided for the node.                   -->
+<script type="text/x-red" data-help-name="twitter-search">
+
+    <h3>About</h3>
+    <p>Returns a collection of relevant Tweets matching a specified query.</p>
+
+    <p>Please note that Twitter’s search service and, by extension, the Search API is not meant to be an exhaustive source of Tweets. Not all Tweets will be indexed or made available via the search interface.</p>
+    <h3>Use</h3>
+    <p>To use either configure the form or pass the following parameters through inside the payload 'q', 'geocode', 'lang', 'result_type', 'count', 'until', 'since_id', 'max_id', 'include_entities'.</p>
+    <p>For more information on these parameters see the twitter API:</p>
+    <p><a href="https://dev.twitter.com/rest/reference/get/search/tweets">search/tweets</a></p>
+</script>
+
+<!-- Finally, the node type is registered along with all of its properties   -->
+<!-- The example below shows a small subset of the properties that can be set-->
+<script type="text/javascript">
+    RED.nodes.registerType('twitter-search',{
+        category: 'social',
+        defaults: {    
+            creds: {value:"", type:"twitter-client"},
+            name: {value:""},
+            q: {value:""},
+            geocode: {value:""},
+            lang: {value:""}, 
+            result_type: {value:"", default: "mixed"}, 
+            count: {value:""}, 
+            until: {value:""}, 
+            since_id: {value:""}, 
+            max_id: {value:""}, 
+            include_entities: {value:""} 
+        },
+        inputs:1,               // set the number of inputs - only 0 or 1
+        outputs:1,              // set the number of outputs - 0 to n
+        icon: "twitter.png",     // saved in  icons/myicon.png
+        color: "#C0DEED", 
+        label: function() {
+            return this.name || "Search Twitter";
+        },
+        paletteLabel: "Search"
+        
+    });
+</script>
