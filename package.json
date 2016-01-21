@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-twitter",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "NodeRED nodes to wrap the v1.1 of the Twitter API",
   "main": "index.js",
   "scripts": {
