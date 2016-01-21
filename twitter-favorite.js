@@ -2,7 +2,7 @@ var Twitter = require('twitter');
 
 var _internals = {};
 
-_internals.search = function (payload, creds, cb) {
+_internals.favorite = function (payload, creds, cb) {
     
     var client = new Twitter({
       consumer_key: creds.consumer_key,
@@ -11,9 +11,10 @@ _internals.search = function (payload, creds, cb) {
       access_token_secret: creds.access_token_secret
     });
     
-    client.get('search/tweets', payload, function(error, tweets, response){
-       cb(error, tweets);
+    client.post('favorites/create', payload, function(error, tweet, response){
+       cb(error, tweet);
     });
+
 };
 
 
@@ -26,21 +27,21 @@ module.exports = function(RED) {
 
         var node = this;
         
-
         this.on('input', function (msg) {
             
-            var creds = RED.nodes.getNode(n.creds);
-            
-            var payload = typeof msg.payload === 'object' ? msg.payload : {};
+            var creds = RED.nodes.getNode(n.creds),
+                payload = typeof msg.payload === 'object' ? msg.payload : {};
         
-            var attrs = ['q','geocode','lang','result_type','count','until','since_id','max_id','include_entities'];
+            var attrs = ['tweet'];
             for (var attr of attrs) {
                 if (n[attr]) {
                     payload[attr] = n[attr];     
                 }
             }
+            
+            payload.id = payload.tweet;
 
-            _internals.search(payload, creds, function(err, result){
+            _internals.favorite(payload, creds, function(err, result){
         
                 msg.payload = result;
                 node.log(err);
@@ -50,5 +51,5 @@ module.exports = function(RED) {
         });
     }
 
-    RED.nodes.registerType('twitter-search', Node);
+    RED.nodes.registerType('twitter-favorite', Node);
 };

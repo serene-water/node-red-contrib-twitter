@@ -20,6 +20,7 @@
   "node-red": {
     "nodes": {
       "twitter-search": "twitter-search.js",
+      "twitter-favorite": "twitter-favorite.js",
       "twitter-client": "twitter-client.js"
     }
   }
