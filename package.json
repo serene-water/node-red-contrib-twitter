@@ -9,6 +9,11 @@
     "dev": "node-red -v"
   },
   "author": "",
+  "keywords": [
+    "node-red",
+    "contrib-twitter",
+    "twitter"
+  ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
