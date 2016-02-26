@@ -33,6 +33,7 @@
     "nodes": {
       "twitter-search": "twitter-search.js",
       "twitter-favorite": "twitter-favorite.js",
+      "twitter-user": "twitter-user.js",
       "twitter-client": "twitter-client.js"
     }
   }
