@@ -59,7 +59,11 @@
         <label for="node-input-include_entities">Include Entities</label>
         <input type="text" id="node-input-include_entities" placeholder="false">
     </div>
-
+    <div class="form-row">
+        <label for="node-input-tweet_mode" style="vertical-align: top"><i class="fa fa-arrow-left"></i>Get full tweets</label>
+        <input type="checkbox" id="node-input-tweet_mode" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-tweet_mode" style="width: 70%;">Check to append the 'tweet_mode = extended' option to obtain a full tweet rather than a truncated version</label>
+    </div>
 </script>
 
 
@@ -71,7 +75,7 @@
 
     <p>Please note that Twitter’s search service and, by extension, the Search API is not meant to be an exhaustive source of Tweets. Not all Tweets will be indexed or made available via the search interface.</p>
     <h3>Use</h3>
-    <p>To use either configure the form or pass the following parameters through inside the payload 'q', 'geocode', 'lang', 'result_type', 'count', 'until', 'since_id', 'max_id', 'include_entities'.</p>
+    <p>To use either configure the form or pass the following parameters through inside the payload 'q', 'geocode', 'lang', 'result_type', 'count', 'until', 'since_id', 'max_id', 'include_entities' and 'tweet_mode'.</p>
     <p>For more information on these parameters see the twitter API:</p>
     <p><a href="https://dev.twitter.com/rest/reference/get/search/tweets" target="_blank">search/tweets</a></p>
 </script>
@@ -92,7 +96,8 @@
             until: {value:""}, 
             since_id: {value:""}, 
             max_id: {value:""}, 
-            include_entities: {value:""} 
+            include_entities: {value:""},
+            tweet_mode: {value:true}
         },
         inputs:1,               // set the number of inputs - only 0 or 1
         outputs:1,              // set the number of outputs - 0 to n
