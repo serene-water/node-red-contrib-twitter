@@ -60,6 +60,11 @@
         <input type="text" id="node-input-include_entities" placeholder="false">
     </div>
     <div class="form-row">
+        <label for="node-input-count">Count</label>
+        <input type="text" id="node-input-count" placeholder="false">
+        <label for="node-input-count" style="width: 70%;">The number of tweets to return per page. Defaults to 15, max 100. Formerly called 'rpp'</label>
+    </div>
+    <div class="form-row">
         <label for="node-input-tweet_mode" style="vertical-align: top"><i class="fa fa-arrow-left"></i>Get full tweets</label>
         <input type="checkbox" id="node-input-tweet_mode" style="display: inline-block; width: auto; vertical-align: top;">
         <label for="node-input-tweet_mode" style="width: 70%;">Check to append the 'tweet_mode = extended' option to obtain a full tweet rather than a truncated version</label>
@@ -97,6 +102,7 @@
             since_id: {value:""}, 
             max_id: {value:""}, 
             include_entities: {value:""},
+            count: {value:15},
             tweet_mode: {value:true}
         },
         inputs:1,               // set the number of inputs - only 0 or 1
