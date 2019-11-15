@@ -18,5 +18,5 @@ You simply need to pass the variables required by the endpoint in the payload.  
 
 ## Implemented Nodes
 
- * Search Node - [https://dev.twitter.com/rest/reference/get/search/tweets](https://dev.twitter.com/rest/reference/get/search/tweets)
+ * Search Node - [https://developer.twitter.com/en/docs/tweets/search/overview](https://developer.twitter.com/en/docs/tweets/search/overview)
  * Favorite Node - [https://dev.twitter.com/rest/reference/post/favorites/create](https://dev.twitter.com/rest/reference/post/favorites/create)
